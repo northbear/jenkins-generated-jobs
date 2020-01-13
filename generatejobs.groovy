@@ -1,7 +1,7 @@
 
 def folderName = 'generated-jobs'
 def gitRepo = 'https://github.com/northbear/jenkins-generated-jobs.git'
-def githubRepo = 'northbear/jenkins-generated-jobs.git'
+def githubRepo = 'northbear/jenkins-generated-jobs'
 
 folder('generated-jobs') {
     displayName('Generated Jobs')
