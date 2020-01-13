@@ -15,7 +15,6 @@ pipelineJob("$folderName/build-flask-app") {
                 github(githubRepo)
             }
             scriptPath('docker-flask-builder/Jenkinsfile')
-            sandbox()
         }
     }
 }
