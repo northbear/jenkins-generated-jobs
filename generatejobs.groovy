@@ -11,6 +11,7 @@ folder('generated-jobs') {
 pipelineJob("$folderName/build-flask-app") {
     definition {
         cpsScm {
+            lightweight()
             scm {
                 github(githubRepo, 'master')
             }
@@ -19,6 +20,27 @@ pipelineJob("$folderName/build-flask-app") {
     }
 }
 
-pipelineJob("$folderName/build-nginx-proxy") {}
-pipelineJob("$folderName/run-application") {}
+pipelineJob("$folderName/build-nginx-proxy") {
+    definition {
+        cpsScm {
+            lightweight()
+            scm {
+                github(githubRepo, 'master')
+            }
+            scriptPath('docker-nginx-builder/Jenkinsfile')
+        }
+    }
+}
+
+pipelineJob("$folderName/run-application") {
+    definition {
+        cpsScm {
+            lightweight()
+            scm {
+                github(githubRepo, 'master')
+            }
+            scriptPath('run-system/Jenkinsfile')
+        }
+    }
+}
 
