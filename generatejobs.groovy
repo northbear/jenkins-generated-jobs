@@ -12,7 +12,7 @@ pipelineJob("$folderName/build-flask-app") {
     definition {
         cpsScm {
             scm {
-                github(githubRepo)
+                github(githubRepo, 'master')
             }
             scriptPath('docker-flask-builder/Jenkinsfile')
         }
