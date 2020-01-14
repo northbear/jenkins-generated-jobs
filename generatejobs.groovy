@@ -2,6 +2,7 @@
 def folderName = 'generated-jobs'
 def gitRepo = 'https://github.com/northbear/jenkins-generated-jobs.git'
 def githubRepo = 'northbear/jenkins-generated-jobs'
+def dockerRegistry='northbear'
 
 folder('generated-jobs') {
     displayName('Generated Jobs')
@@ -9,6 +10,9 @@ folder('generated-jobs') {
 }    
 
 pipelineJob("$folderName/build-flask-app") {
+    environmentVariables {
+        env('DOCKER_REGISTRY', dockerRegistry)
+    }
     definition {
         cpsScm {
             lightweight()
@@ -21,6 +25,9 @@ pipelineJob("$folderName/build-flask-app") {
 }
 
 pipelineJob("$folderName/build-nginx-proxy") {
+    environmentVariables {
+        env('DOCKER_REGISTRY', dockerRegistry)
+    }
     definition {
         cpsScm {
             lightweight()
@@ -33,6 +40,9 @@ pipelineJob("$folderName/build-nginx-proxy") {
 }
 
 pipelineJob("$folderName/run-application") {
+    environmentVariables {
+        env('DOCKER_REGISTRY', dockerRegistry)
+    }
     definition {
         cpsScm {
             lightweight()
