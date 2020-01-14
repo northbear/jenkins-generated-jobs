@@ -54,3 +54,11 @@ pipelineJob("$folderName/run-application") {
     }
 }
 
+job('$folderName/test-variables') {
+    environmentVariables {
+        env('DOCKER_REGISTRY', dockerRegistry)
+    }
+    steps {
+        shell('echo ${DOCKER_REGISTRY}')
+    }
+}
