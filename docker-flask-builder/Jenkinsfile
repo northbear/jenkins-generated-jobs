@@ -15,7 +15,7 @@ pipeline {
                 sh 'echo build'
             }
         }
-        stage('Push Image To Registry' + registry) {
+        stage('Push Image To Registry') {
             steps {
                 sh 'echo push'
             }
