@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    environment {
+        registry = 'northbear/flask-app'
+        registryCredential = 'dockerhub'
+    }
+    stages {
+        stage('Pull Flask-App Data From Git') {
+            steps {
+                git 'https://github.com/northbear/jenkins-generated-jobs.git'
+            }
+        }
+        stage('Build Image of Flask-App') {
+            steps {}
+        }
+        stage("Push Image To Registry ${registry}") {
+            steps {}
+        }
+    }
+}
